@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#064E3B">
+<title>DIGITAL PRENEUR AI STUDIO</title>
+<style>
+:root{--deep:#064E3B;--green:#10B981;--ivory:#F5F5F0;--char:#172B26;--mint:#D1FAE5;--muted:#6C7C75;--line:#E2E9E4;--white:#fff;--shadow:0 10px 30px rgba(6,78,59,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--ivory);color:var(--char);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}
+.app{max-width:1120px;margin:auto;min-height:100vh;padding-bottom:86px}
+.top{background:var(--deep);color:white;padding:22px 18px 28px;border-radius:0 0 26px 26px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:12px;letter-spacing:1.5px;font-weight:800}.status{font-size:10px;background:#ffffff20;border:1px solid #ffffff40;padding:6px 9px;border-radius:30px}
+h1{font-size:25px;line-height:1.16;margin:23px 0 8px;letter-spacing:-.7px}.sub{font-size:13px;color:#D5E9E0;line-height:1.5;margin:0;max-width:500px}
+.content{padding:18px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:6px 0 13px}.section-head h2{font-size:17px;margin:0}.section-head small{color:var(--muted);font-size:11px}
+.welcome{background:white;border:1px solid var(--line);padding:16px;border-radius:18px;box-shadow:var(--shadow);margin-top:-3px;display:flex;align-items:center;justify-content:space-between;gap:12px}.welcome strong{font-size:14px}.welcome p{font-size:12px;color:var(--muted);margin:5px 0 0;line-height:1.45}.spark{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--mint);font-size:21px;flex:none}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.feature{background:white;border:1px solid var(--line);border-radius:17px;padding:15px;text-align:left;min-height:142px;box-shadow:0 4px 14px rgba(6,78,59,.035);color:var(--char);transition:.15s}.feature:active{transform:scale(.98)}.feature .ico{width:38px;height:38px;border-radius:12px;background:var(--mint);display:grid;place-items:center;font-size:19px;margin-bottom:12px}.feature b{font-size:13px;display:block}.feature span{font-size:11px;color:var(--muted);line-height:1.4;display:block;margin-top:5px}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px}.panel h3{font-size:16px;margin:0 0 6px}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 14px}
+label{display:block;font-size:12px;font-weight:700;margin:13px 0 6px}input,textarea,select{width:100%;border:1px solid #DCE6DF;background:#FBFCFA;border-radius:11px;padding:12px;color:var(--char);outline:none;font-size:13px}textarea{min-height:88px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #10B98120}
+.primary{background:var(--green);color:#063C2C;border:0;border-radius:12px;padding:13px 16px;font-weight:800;font-size:13px;width:100%;margin-top:15px}.secondary{background:white;color:var(--deep);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700}
+.output{white-space:pre-wrap;background:#F6FBF7;border:1px solid #D7EDE0;border-radius:13px;padding:13px;font-size:13px;line-height:1.6;min-height:80px;margin-top:12px}
+.rowbtn{display:flex;gap:8px;margin-top:9px}.rowbtn button{flex:1}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fffffff2;backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:5;padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.navinner{width:min(100%,700px);display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.nav button{background:transparent;border:0;color:#73827A;font-size:10px;padding:7px 2px;border-radius:10px}.nav button .ni{font-size:18px;display:block;margin-bottom:3px}.nav button.active{background:var(--mint);color:var(--deep);font-weight:800}
+.page{display:none}.page.active{display:block}.history-item{border-bottom:1px solid var(--line);padding:11px 0}.history-item:last-child{border:0}.history-item b{font-size:12px}.history-item small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.empty{font-size:12px;color:var(--muted);text-align:center;padding:22px 8px}
+.chip{display:inline-block;background:var(--mint);color:var(--deep);font-size:10px;font-weight:800;padding:5px 8px;border-radius:30px}
+.profilebox{background:var(--deep);color:white;border-radius:18px;padding:17px}.profilebox p{font-size:12px;color:#D5E9E0;line-height:1.5}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--char);color:white;padding:10px 14px;border-radius:30px;font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:10}.toast.show{opacity:1}
+@media(min-width:700px){.content{padding:24px 30px}.top{padding:28px 30px 36px}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}h1{font-size:32px}.app{padding-bottom:30px}.nav{position:sticky;bottom:0;border:1px solid var(--line);border-radius:16px;margin:0 auto 12px;width:min(100% - 36px,700px)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="topline"><div class="brand">DIGITAL PRENEUR <span style="color:#6EE7B7">AI STUDIO</span></div><div class="status">PROTOTIPE • MODE DEMO</div></div>
+ <h1>Mulai bisnis digital<br>dengan lebih terarah.</h1>
+ <p class="sub">Temukan ide, pahami calon pembeli, buat konten, dan susun penawaran dalam satu tempat.</p>
+</header>
+<main class="content">
+<section id="dashboard" class="page active">
+ <div class="welcome"><div><strong>Selamat datang di AI Studio 👋</strong><p>Ruang kerja praktis untuk pebisnis produk digital pemula.</p></div><div class="spark">✦</div></div>
+ <div class="section-head" style="margin-top:24px"><h2>Studio Generator</h2><small>Mulai dari kebutuhanmu</small></div>
+ <div class="grid">
+  <button class="feature" onclick="openTool('idea')"><div class="ico">💡</div><b>AI Idea Finder</b><span>Temukan ide produk digital yang relevan.</span></button>
+  <button class="feature" onclick="openTool('research')"><div class="ico">🔎</div><b>AI Market Research</b><span>Pahami masalah dan kebutuhan calon pembeli.</span></button>
+  <button class="feature" onclick="openTool('content')"><div class="ico">✍️</div><b>AI Content Generator</b><span>Buat konten untuk Threads, TikTok, dan WA.</span></button>
+  <button class="feature" onclick="openTool('copy')"><div class="ico">🚀</div><b>AI Sales Copywriter</b><span>Susun hook, caption, dan CTA yang natural.</span></button>
+ </div>
+ <div class="section-head" style="margin-top:25px"><h2>Riwayat terakhir</h2><small>Disimpan di perangkat ini</small></div>
+ <div class="panel" id="recent"><div class="empty">Belum ada hasil. Coba generator pertamamu.</div></div>
+ <div class="profilebox"><span class="chip">LANGKAH AWAL</span><h3 style="margin:12px 0 4px">Kenali bisnis yang ingin kamu bangun.</h3><p>Isi profil bisnis agar ide dan konten yang dibuat nanti lebih sesuai dengan produk serta target pasarmu.</p><button class="secondary" onclick="showPage('profile')">Lengkapi profil bisnis →</button></div>
+</section>
+
+<section id="generator" class="page">
+ <div class="section-head"><h2>AI Generator</h2><span class="chip">4 alat utama</span></div>
+ <div class="panel">
+  <h3 id="toolTitle">Pilih generator</h3><p class="hint" id="toolHint">Pilih salah satu alat di bawah untuk memulai.</p>
+  <label for="topic">Topik / produk yang ingin dibahas</label><input id="topic" placeholder="Contoh: worksheet anak usia 3–5 tahun">
+  <label for="audience">Target audiens</label><input id="audience" placeholder="Contoh: orang tua anak usia dini">
+  <label for="goal">Tujuan</label><select id="goal"><option>Menemukan peluang produk</option><option>Memahami calon pembeli</option><option>Meningkatkan interaksi</option><option>Mendapatkan kunjungan katalog</option><option>Mendorong penjualan secara natural</option></select>
+  <label for="detail">Informasi tambahan (opsional)</label><textarea id="detail" placeholder="Ceritakan masalah, keunggulan produk, harga, atau konteks lainnya..."></textarea>
+  <button class="primary" onclick="generate()">Buat hasil demo ✨</button>
+  <div id="resultWrap" style="display:none"><div class="section-head" style="margin-top:20px"><h2>Hasil generator</h2><span class="chip">Mode demo</span></div><div id="result" class="output"></div><div class="rowbtn"><button class="secondary" onclick="copyResult()">Salin hasil</button><button class="secondary" onclick="saveResult()">Simpan ke Library</button></div></div>
+ </div>
+ <div class="panel"><h3>Belum tahu mulai dari mana?</h3><p class="hint">Pilih salah satu generator sesuai urutan kerja yang disarankan.</p><div class="grid">
+  <button class="feature" onclick="selectTool('idea')"><div class="ico">💡</div><b>1. Cari ide</b><span>Mulai dari peluang.</span></button>
+  <button class="feature" onclick="selectTool('research')"><div class="ico">🔎</div><b>2. Riset pasar</b><span>Kenali kebutuhan.</span></button>
+  <button class="feature" onclick="selectTool('content')"><div class="ico">✍️</div><b>3. Buat konten</b><span>Bangun kepercayaan.</span></button>
+  <button class="feature" onclick="selectTool('copy')"><div class="ico">🚀</div><b>4. Susun penawaran</b><span>Ajak audiens bertindak.</span></button>
+ </div></div>
+</section>
+
+<section id="library" class="page">
+ <div class="section-head"><h2>Business Library</h2><small>Hasil tersimpan</small></div>
+ <div class="panel"><p class="hint">Hasil generator yang kamu simpan akan muncul di sini. Data prototipe disimpan pada browser perangkat ini.</p><div id="libraryList"><div class="empty">Library masih kosong.</div></div></div>
+</section>
+
+<section id="profile" class="page">
+ <div class="section-head"><h2>Profil Bisnis</h2><span class="chip">Pengaturan awal</span></div>
+ <div class="panel"><h3>Ceritakan bisnismu</h3><p class="hint">Informasi ini menjadi konteks kerja generator pada versi berikutnya.</p>
+  <label>Nama bisnis / brand</label><input id="brand" placeholder="Contoh: DIGITAL PRENEUR">
+  <label>Jenis produk digital</label><input id="productType" placeholder="Contoh: worksheet, ebook, template, kelas">
+  <label>Target audiens utama</label><input id="target" placeholder="Contoh: pebisnis produk digital pemula">
+  <label>Gaya komunikasi brand</label><select id="tone"><option>Natural, ramah, dan edukatif</option><option>Profesional dan terpercaya</option><option>Santai dan persuasif</option></select>
+  <button class="primary" onclick="saveProfile()">Simpan profil di perangkat</button>
+ </div>
+ <div class="panel"><h3>Informasi prototipe</h3><p class="hint">Versi ini belum memakai Gemini API, belum memiliki akun pengguna, dan belum menyimpan data ke server. Jangan masukkan informasi rahasia.</p></div>
+</section>
+</main>
+<nav class="nav"><div class="navinner">
+ <button class="active" data-page="dashboard" onclick="showPage('dashboard')"><span class="ni">⌂</span>Beranda</button>
+ <button data-page="generator" onclick="showPage('generator')"><span class="ni">✦</span>Generator</button>
+ <button data-page="library" onclick="showPage('library')"><span class="ni">▤</span>Library</button>
+ <button data-page="profile" onclick="showPage('profile')"><span class="ni">◉</span>Profil</button>
+</div></nav>
+<div class="toast" id="toast"></div>
+</div>
+<script>
+const tools={
+ idea:{title:"AI Idea Finder",hint:"Cari peluang produk digital dari kebutuhan target audiens.",placeholder:"Contoh: pebisnis pemula yang bingung mulai jualan produk digital"},
+ research:{title:"AI Market Research",hint:"Petakan masalah, kebutuhan, hambatan, dan ide solusi untuk calon pembeli.",placeholder:"Contoh: orang tua yang mencari aktivitas belajar anak di rumah"},
+ content:{title:"AI Content Generator",hint:"Susun ide konten edukatif dan percakapan yang relevan untuk platform pilihanmu.",placeholder:"Contoh: manfaat worksheet aktivitas anak"},
+ copy:{title:"AI Sales Copywriter",hint:"Buat pesan penawaran yang jelas, empatik, dan tidak berlebihan.",placeholder:"Contoh: paket worksheet anak 1.200+ halaman"}
+};
+let currentTool="idea",currentResult="";
+const $=id=>document.getElementById(id);
+function showPage(p){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$(p).classList.add("active");document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===p));if(p==="library")renderLibrary();if(p==="dashboard")renderRecent();window.scrollTo({top:0,behavior:"smooth"})}
+function openTool(t){selectTool(t);showPage("generator")}
+function selectTool(t){currentTool=t; $("toolTitle").textContent=tools[t].title;$("toolHint").textContent=tools[t].hint;$("topic").placeholder=tools[t].placeholder;$("resultWrap").style.display="none";showPage("generator")}
+function generate(){
+ const topic=$("topic").value.trim(),aud=$("audience").value.trim()||"calon pembeli yang relevan",goal=$("goal").value,detail=$("detail").value.trim();
+ if(!topic){toast("Isi topik atau produk terlebih dahulu.");$("topic").focus();return}
+ let out="";
+ if(currentTool==="idea") out=`PETA IDE PRODUK DIGITAL\nTopik: ${topic}\nTarget: ${aud}\n\n1. Template praktis\nBuat template siap pakai yang membantu audiens menyelesaikan satu pekerjaan spesifik.\n\n2. Panduan langkah demi langkah\nSusun panduan pemula yang menjawab satu masalah dari awal sampai hasil yang diharapkan.\n\n3. Paket alat bantu\nGabungkan checklist, worksheet, dan contoh agar pengguna lebih mudah menerapkan solusi.\n\nVALIDASI SEBELUM MEMBUAT\n• Wawancarai 5–10 calon pengguna.\n• Cari pertanyaan yang sering muncul di komunitas.\n• Uji minat melalui contoh produk sederhana.\n• Jangan menganggap ide ini pasti laku sebelum ada validasi.`;
+ if(currentTool==="research") out=`RINGKASAN RISET AWAL\nTopik: ${topic}\nTarget: ${aud}\n\nKEMUNGKINAN MASALAH\n• Bingung menentukan langkah pertama.\n• Sulit memilih solusi yang sesuai kebutuhan.\n• Khawatir membuang waktu atau biaya untuk pilihan yang salah.\n\nPERTANYAAN VALIDASI\n1. Apa bagian paling sulit yang sedang dihadapi?\n2. Solusi apa yang pernah dicoba?\n3. Apa yang membuat solusi sebelumnya belum berhasil?\n4. Format bantuan seperti apa yang paling mudah digunakan?\n\nLANGKAH BERIKUTNYA\nLakukan percakapan dengan calon pengguna dan catat kata-kata asli mereka. Ini hipotesis awal, bukan hasil survei pasar faktual.`;
+ if(currentTool==="content") out=`DRAF KONTEN EDUKATIF\nTopik: ${topic}\nTarget: ${aud}\nTujuan: ${goal}\n\nHOOK\n"Masih bingung harus mulai dari mana? Coba pecah dulu masalahnya menjadi langkah kecil."\n\nISI\nBanyak orang ingin mendapatkan hasil, tetapi sering melewatkan satu hal: memahami kebutuhan orang yang ingin dibantu.\nMulailah dengan mencari masalah yang sering mereka ceritakan, lalu buat satu solusi sederhana yang mudah dicoba.\n\nAJAKAN INTERAKSI\n"Kalau boleh tahu, bagian mana yang paling membuat kamu bingung saat ini?"\n\nCatatan: sesuaikan contoh dengan pengalaman dan produkmu sendiri.`;
+ if(currentTool==="copy") out=`DRAF PENAWARAN NATURAL\nProduk: ${topic}\nTarget: ${aud}\n\nHOOK\n"Sedang mencari cara yang lebih praktis untuk ${topic.toLowerCase()}?"\n\nMASALAH\nMemulai sesuatu sering terasa membingungkan ketika belum punya panduan yang jelas.\n\nSOLUSI\nKenalkan produkmu sebagai alat bantu yang menjelaskan langkah, manfaat, dan cara penggunaan secara transparan.\n\nCTA\n"Kalau ingin melihat isi dan cara kerjanya, kamu bisa cek detail produknya terlebih dahulu."\n\nPENGINGAT\nTambahkan harga, isi produk, batas lisensi, dan bukti yang benar-benar kamu miliki. Hindari janji hasil atau penghasilan yang tidak bisa dibuktikan.`;
+ if(detail) out+="\n\nKONTEKS TAMBAHAN\n"+detail;
+ currentResult=out;$("result").textContent=out;$("resultWrap").style.display="block";toast("Draf demo berhasil dibuat.");
+}
+function getSaved(){try{return JSON.parse(localStorage.getItem("dpai_saved")||"[]")}catch(e){return []}}
+function saveResult(){if(!currentResult)return;let arr=getSaved();arr.unshift({title:tools[currentTool].title,topic:$("topic").value,text:currentResult,date:new Date().toLocaleString("id-ID")});localStorage.setItem("dpai_saved",JSON.stringify(arr.slice(0,30)));toast("Hasil disimpan di Library.");renderLibrary()}
+function renderLibrary(){let arr=getSaved();$("libraryList").innerHTML=arr.length?arr.map((x,i)=>`<div class="history-item"><b>${escapeHtml(x.title)} — ${escapeHtml(x.topic)}</b><small>${escapeHtml(x.date)}</small><button class="secondary" style="margin-top:8px" onclick="viewSaved(${i})">Lihat hasil</button></div>`).join(""):'<div class="empty">Library masih kosong.</div>'}
+function renderRecent(){let arr=getSaved().slice(0,3);$("recent").innerHTML=arr.length?arr.map((x,i)=>`<div class="history-item"><b>${escapeHtml(x.title)} — ${escapeHtml(x.topic)}</b><small>${escapeHtml(x.date)}</small></div>`).join(""):'<div class="empty">Belum ada hasil. Coba generator pertamamu.</div>'}
+function viewSaved(i){let x=getSaved()[i];if(!x)return;alert(x.text)}
+function saveProfile(){let p={brand:$("brand").value,productType:$("productType").value,target:$("target").value,tone:$("tone").value};localStorage.setItem("dpai_profile",JSON.stringify(p));toast("Profil disimpan di perangkat ini.")}
+function copyResult(){if(!currentResult)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(currentResult).then(()=>toast("Hasil berhasil disalin.")).catch(()=>fallbackCopy())}else fallbackCopy()}
+function fallbackCopy(){let t=document.createElement("textarea");t.value=currentResult;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();toast("Hasil disalin.")}
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(s){let t=$("toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+(function(){let p={};try{p=JSON.parse(localStorage.getItem("dpai_profile")||"{}")}catch(e){}$("brand").value=p.brand||"DIGITAL PRENEUR";$("productType").value=p.productType||"";$("target").value=p.target||"Pebisnis produk digital pemula";$("tone").value=p.tone||"Natural, ramah, dan edukatif";renderRecent()})();
+</script>
+</body>
+</html>
